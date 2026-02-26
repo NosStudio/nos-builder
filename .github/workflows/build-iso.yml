@@ -16,8 +16,8 @@ jobs:
 
       - name: Install dependencies
         run: |
-          sudo apt update
-          sudo apt install -y live-build curl git unzip sudo
+          apt update
+          apt install -y live-build curl git unzip
 
       - name: Build ISO
         run: |

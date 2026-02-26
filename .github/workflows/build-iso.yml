@@ -1,0 +1,33 @@
+name: Build NosStudio ISO
+
+on:
+  push:
+    branches: [ "master" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          sudo apt update
+          sudo apt install -y live-build debootstrap
+
+      - name: Build ISO
+        run: |
+          chmod +x auto/config
+          if [ -d config/hooks/normal ]; then chmod +x config/hooks/normal/*.chroot; fi
+          sudo lb clean
+          sudo lb config
+          sudo lb build
+
+      - name: Upload ISO Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: NosStudio-ISO
+          path: "*.iso"
+          if-no-files-found: error

@@ -1,0 +1,6 @@
+#!/bin/sh
+lb config noauto \
+    -d trixie \
+    --debian-installer live \
+    --architectures amd64 \
+    "${@}"

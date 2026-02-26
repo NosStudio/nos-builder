@@ -7,6 +7,5 @@ lb config noauto \
     --debian-installer live \
     --debian-installer-distribution trixie \
     --distribution trixie \
-    --archive-areas "main contrib non-free non-free-firmware" \
     --architectures amd64 \
     "${@}"

@@ -8,6 +8,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    container: debian:trixie
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -15,7 +17,7 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt update
-          sudo apt install -y live-build debootstrap
+          sudo apt install -y live-build curl git unzip sudo
 
       - name: Build ISO
         run: |
@@ -23,6 +25,7 @@ jobs:
           if [ -d config/hooks/normal ]; then
             find config/hooks/normal -type f -name "*.chroot" -exec chmod +x {} +
           fi
+
           sudo lb clean
           sudo lb config
           sudo lb build

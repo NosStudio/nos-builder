@@ -1,0 +1,22 @@
+#!/bin/sh
+set -e
+
+echo "====================================================="
+echo "Default NosStudio installation"
+echo "====================================================="
+
+echo "-> Download nos-core..."
+curl -sL "https://github.com/NosStudio/nos-core/releases/latest/download/nos-core.deb" -o /tmp/nosstudio-core.deb
+
+echo "-> Download nos-ui..."
+curl -sL "https://github.com/NosStudio/nos-ui/releases/latest/download/nos-ui.deb" -o /tmp/nosstudio-ui.deb
+
+echo "-> Downloading in system..."
+apt-get install -y /tmp/nosstudio-core.deb
+apt-get install -y /tmp/nosstudio-ui.deb
+
+# 4. Nettoyage
+echo "-> Clear temporary files..."
+rm /tmp/nosstudio-*.deb
+
+echo "Installation finished"

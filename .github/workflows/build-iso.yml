@@ -20,7 +20,9 @@ jobs:
       - name: Build ISO
         run: |
           chmod +x auto/config
-          if [ -d config/hooks/normal ]; then chmod +x config/hooks/normal/*.chroot; fi
+          if [ -d config/hooks/normal ]; then
+            find config/hooks/normal -type f -name "*.chroot" -exec chmod +x {} +
+          fi
           sudo lb clean
           sudo lb config
           sudo lb build

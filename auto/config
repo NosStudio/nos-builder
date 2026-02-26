@@ -10,6 +10,5 @@ lb config noauto \
     --archive-areas "main contrib non-free non-free-firmware" \
     --architectures amd64 \
     --security false \
-    --updates true \
-    --image-name "NosStudio" \
+    --apt-indices false \
     "${@}"

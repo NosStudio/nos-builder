@@ -15,7 +15,6 @@ echo "-> Downloading in system..."
 apt-get install -y /tmp/nosstudio-core.deb
 apt-get install -y /tmp/nosstudio-ui.deb
 
-# 4. Nettoyage
 echo "-> Clear temporary files..."
 rm /tmp/nosstudio-*.deb
 
